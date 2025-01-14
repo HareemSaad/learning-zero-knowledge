@@ -35,3 +35,23 @@ component main = Problem();
 ```
  
 - we use array for output signals as circom does not support quadratic operations so we could not have used one signal and iteratively multiplied it with each input signal.
+
+### Version 2: Removing the array
+```circom
+pragma circom 2.1.6;
+
+// check if any one signal is zero
+template Problem () {
+    signal input a;
+    signal input b;
+    signal input c;
+
+    signal output x;
+
+    x <-- a * b * c;
+
+    x === 0;
+}
+
+component main = Problem();
+```

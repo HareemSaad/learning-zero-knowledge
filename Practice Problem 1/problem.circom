@@ -6,12 +6,11 @@ template Problem () {
     signal input b;
     signal input c;
 
-    signal output x[2];
+    signal output x;
 
-    x[0] <-- a * b;
-    x[1] <-- x[0] * c;
+    x <-- a * b * c;
 
-    x[1] === 0;
+    x === 0;
 }
 
 component main = Problem();
