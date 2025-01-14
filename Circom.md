@@ -107,6 +107,36 @@ component main { public [ a ] } = Example();
 } */
 ```
 
+### Working with Circom
+#### Installation
+1. [Install Circom](https://docs.circom.io/getting-started/installation/)
+2. Install SnarkJS: ```npm install -g snarkjs```
+#### Project Setup
+1. Create a new directory for your project.
+2. Create a new file with the `.circom` extension.
+3. Write your circuit in the file.
+4. Run the following command to compile the circuit: ```circom <filename>.circom --r1cs --wasm --sym --c```
+    - `--r1cs` Outputs the constraints in r1cs format
+    - `--wasm` Outputs witness in sym format
+    - `--sym` Compiles the circuit to wasm
+    - `--c` Compiles the circuit to c
+5. Create `input.json` file with the input values. 
+    - ```json
+        {
+            "a": "5",
+            "b": "77"
+        }
+
+      `a` and `b` are the input signals in the circuit.
+6. Run command to generate witness ```node <path>/generate_witness.js <path>/<file_name>.wasm input.json witness.wtns```
+7. Run command to generate proof ```snarkjs wtns xport json witness.wtns witness.json```
+    - You will get input like this:
+    ```json
+    {
+        "5",
+        "77"
+    } 
+8. 
 ### Libraries
 - [Poseidon](https://github.com/iden3/circomlib/blob/master/circuits/poseidon.circom) -- Poseidon is a hash function designed to minimize prover and verifier complexities when Zero-Knowledge Proofs are generated and validated as a reason it's very commonly used, we will utilize Poseidon more in the next lesson. 
 
