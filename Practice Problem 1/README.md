@@ -65,6 +65,10 @@ component main = Problem();
     tmp <-- a * b;
     x <-- tmp * c;
     ```
+    Note: X <== a * b * c; is not allowed as it is a non-quadratic operation.
+    
+- What is wrong with this approach? the signals do not occur in a constraint, so the circuit is not enforcing the correctness of x.
+
 
 ### Version 3: Dynamic number of input signals
 
