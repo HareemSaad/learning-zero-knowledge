@@ -6,8 +6,8 @@
 | `-` | Subtraction |
 | `*` | Multiplication |
 | `/` | Division |
-| `===` | Equality/Constrain |
-| `<--` | Assignment |
+| `===` | Equality/Constrain - enforces constraints in R1CS, making proofs verifiable |
+| `<--` | Assignment - allows witness assignment but does not generate constraints. |
 | `<==` | Equality/Constrain and Assignment |
 
 ### Keywords

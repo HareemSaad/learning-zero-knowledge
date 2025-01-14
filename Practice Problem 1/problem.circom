@@ -1,16 +1,22 @@
 pragma circom 2.1.6;
 
 // check if any one signal is zero
-template Problem () {
-    signal input a;
-    signal input b;
-    signal input c;
+template Problem (n) {
+    // input array
+    signal input a[n];
 
-    signal output x;
+    // output signal
+    signal output x[n];
 
-    x <-- a * b * c;
+    x[0] <== a[0];
 
-    x === 0;
+    // multiplication of all elements
+    for (var i = 1; i < n; i++){
+        x[i] <== x[i-1] * a[i];
+    }
+
+    // check if the result is zero
+    x[n-1] === 0;
 }
 
-component main = Problem();
+component main = Problem(3);
