@@ -139,3 +139,43 @@ template Problem (n) {
 
 component main = Problem(3);
 ```
+
+### Version 4: Using bits
+```circom
+pragma circom 2.0.0;
+
+template AtLeastOneZeroBits(n) {
+    signal input x[n];  // Array of input signals
+    signal output out;  // Output signal (1 if at least one x[i] == 0, else 0)
+
+    signal prod[n];  // Intermediate signal to compute the product of x[i]
+
+    // 0-1 constraints for each x[i]
+    for (var i = 0; i < n; i++) {
+        x[i] * (x[i] - 1) === 0;  // Each x[i] must be either 0 or 1
+    }
+
+    // Initialize product signal to 1 (neutral element for multiplication)
+    prod[0] <== x[0];
+
+    // Compute the product of all x[i]
+    for (var i = 1; i < n; i++) {
+        prod[i] <== prod[i-1] * x[i];
+    }
+
+    // Output is 1 if prod == 0, else 0
+    1 === (1 - prod[n-1]);
+    out <== 1 - prod[n-1];
+}
+
+component main = AtLeastOneZeroBits(4);  // Example with n = 3
+
+
+/* INPUT = {
+    "x": [1, 1, 0, 1]
+} */
+```
+
+Here
+- `x[i] * (x[i] - 1) === 0;` is a 0-1 constraint that ensures each `x[i]` is either 0 or 1.
+- `1 === (1 - prod[n-1]);` is a 0-1 constraint (NAND Gate) that ensures `out` is 1 if `prod` is 0, else 0.
