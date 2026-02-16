@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "circomlibjs": "^0.1.7",
+    "keccak256": "^1.0.6",
+    "minimist": "^1.2.8",
+    "snarkjs": "^0.7.5"
+  },
+  "scripts": {
+    "compile-set-contains": "cd set-contains && ./compile.sh",
+    "prove-set-contains": "cd set-contains && node scripts/prove.js"
+  }
+}

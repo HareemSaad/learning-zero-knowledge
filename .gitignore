@@ -1,2 +1,10 @@
 input.json
 witness.json
+
+# circuit build files
+/*/circuits/*/build/
+/*/circuits/*/runs/
+*.ptau
+contracts/src/verifiers/
+
+node_modules/

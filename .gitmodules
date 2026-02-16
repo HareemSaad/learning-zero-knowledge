@@ -1,0 +1,6 @@
+[submodule "contracts/lib/forge-std"]
+	path = End-To-End/contracts/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
+[submodule "circuits/circomlib"]
+	path = End-To-End/circuits/circomlib
+	url = https://github.com/iden3/circomlib.git

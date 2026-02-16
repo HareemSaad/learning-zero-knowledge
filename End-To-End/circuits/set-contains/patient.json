@@ -1,0 +1,13 @@
+[
+  {
+    "name": "John Doe",
+    "age": 45,
+    "medications": [
+      "metformin",
+      "lisinopril",
+      "atorvastatin",
+      "aspirin",
+      "omeprazole"
+    ]
+  }
+]
